@@ -16,6 +16,8 @@
   // remove button on card/bookmark
   var deleteButton = document.querySelector('.delete-btn');
   console.log("Delete button is :", deleteButton);
+  // array to store cards
+  var cards = [];
 
 // objects
   // bookmark/card
@@ -61,9 +63,8 @@ function createCard(event){
 }
   // add bookmark/card to list/array
 function addCardToList(newArrayItem){
-    // get bookmark/card object
-
       // add to end of list/array
+  cards.push(newArrayItem);
 }
 
 
