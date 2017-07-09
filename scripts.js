@@ -33,7 +33,7 @@
 
   // submit button
     // on click, add bookmark/card to list
-submitButton.addEventListener('click', addCardToList);
+submitButton.addEventListener('click', createCard);
 
   // remove button
     // on click, remove bookmark/card from list
@@ -46,18 +46,23 @@ readButton.addEventListener('click', changeCardReadUnread);
 
 // functions (some may be object methods)
 
-  // create Card
+  // Card constructor/prototype
 function Card(title, url) {
   this.title = title;
   this.url = url;
   this.isRead = false;
 }
 
+  // create a new card object
+function createCard(event){
+  var newCard = new Card(titleInput.value, urlInput.value);
+  console.log(newCard);
+  addCardToList(newCard);
+}
   // add bookmark/card to list/array
-function addCardToList(){
+function addCardToList(newArrayItem){
     // get bookmark/card object
-    var newCard = new Card(titleInput.value, urlInput.value);
-    console.log(newCard);
+
       // add to end of list/array
 }
 
