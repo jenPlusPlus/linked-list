@@ -46,16 +46,18 @@ readButton.addEventListener('click', changeCardReadUnread);
 
 // functions (some may be object methods)
 
-  // create Card 
-function Card(title, url, isRead) {
+  // create Card
+function Card(title, url) {
   this.title = title;
   this.url = url;
-  this.isRead = isRead;
+  this.isRead = false;
 }
 
   // add bookmark/card to list/array
 function addCardToList(){
     // get bookmark/card object
+    var newCard = new Card(titleInput.value, urlInput.value);
+    console.log(newCard);
       // add to end of list/array
 }
 
@@ -83,22 +85,14 @@ function toggleReadProperty() {
       // else, set to true
 }
 
-function toggleReadButton(){
+function toggleReadClass(){
     // toggle read/unread button on cards/bookmarks (remove/add .read class)
     readButton.classList.toggle('read');
   }
 
 function changeCardReadUnread(event){
-  //    event.preventDefault();
-      toggleReadButton();
+      toggleReadClass();
     //  toggleReadProperty();
-    //  toggleReadButton();
     // change bookmark/card read/unread
     // toggle read object property
-}
-
-  // toggle read/unread button on cards/bookmarks (remove/add .read class)
-function removeAddReadClass() {
-    // get bookmark/card object read property (true/false)
-      // add/remove (toggle) .read class based on read property (true/false)
 }
