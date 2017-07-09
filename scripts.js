@@ -29,12 +29,17 @@
     // on click, toggle .read class on or off
 
 // functions (some may be object methods)
-  // add bookmark/card to list
+  // add bookmark/card to list/array
     // get bookmark/card object
-    // add to end of list/array
-  // remove bookmark/card from list
-    // get bookmark/card object
-    // remove from list/array
+      // add to end of list/array
+  // find bookmark/card in list/array
+    // if object title = title of object in list/array
+      // found correct object
+    // else
+      // get next object from array
+  // remove bookmark/card from list/array
+    // find correct bookmark/card in list/array
+    // delete from list/array
     // clean up array? (remove empty array index)
   // toggle read object property
     // get bookmark/card object
@@ -43,7 +48,7 @@
       // else, set to true
   // toggle read/unread button on cards/bookmarks (remove/add .read class)
     // get bookmark/card object read property (true/false)
-      // add/remove .read class based on read property (true/false)
+      // add/remove (toggle) .read class based on read property (true/false)
   // change bookmark/card read/unread
     // toggle read object property
     // toggle read/unread button on cards/bookmarks (remove/add .read class)
