@@ -10,14 +10,16 @@
   // submit button
   var submitButton = document.querySelector('.enter-btn');
   console.log("Submit button is :", submitButton);
-  // toggle button on card/bookmark (read/unread)
-  var readButton;
+
+  // toggle buttons on card/bookmark (read/unread)
+  var readButtons = [];
 
   // remove button on card/bookmark
   var deleteButton;
   // array to store cards
   var cards = [];
-
+  // array to store delete buttons on cards
+  var deleteButtons = [];
 
 // event listeners
 
@@ -81,13 +83,15 @@ function toggleReadProperty() {
       // else, set to true
 }
 
-function toggleReadClass(){
+function toggleReadClass(buttonToToggleClass){
     // toggle read/unread button on cards/bookmarks (remove/add .read class)
-  readButton.classList.toggle('read');
+    console.log("this is: ",this);
+  buttonToToggleClass.classList.toggle('read');
   }
 
 function changeCardReadUnread(event){
-  toggleReadClass();
+  console.log("this is: ", this);
+  toggleReadClass(this);
     //  toggleReadProperty();
 }
 
@@ -105,11 +109,14 @@ function addCardToPage(cardToAddToPage){
     var section = document.querySelector('.section-right');
     section.appendChild(newArticle);
 
-    readButton = document.querySelector('.read-btn');
-    console.log("Read button is :", readButton);
-    readButton.addEventListener('click', changeCardReadUnread);
-    
-    deleteButton = document.querySelector('.delete-btn');
-    console.log("Delete button is :", deleteButton);
+
+    readButtons = document.querySelectorAll('.read-btn');
+    console.log("readButtons.length is: ", readButtons.length);
+    console.log("readButtons is: ", readButtons);
+    readButtons[readButtons.length-1].addEventListener('click', changeCardReadUnread);
+    console.log("readButtons[readButtons.length-1]: ", readButtons[readButtons.length-1]);
+
+    deleteButtons = document.querySelector('.delete-btn');
+    console.log("Delete button is :", deleteButtons);
     deleteButton.addEventListener('click', findCardInArray);
 }
