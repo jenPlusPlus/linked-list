@@ -11,25 +11,13 @@
   var submitButton = document.querySelector('.enter-btn');
   console.log("Submit button is :", submitButton);
   // toggle button on card/bookmark (read/unread)
-  var readButton = document.querySelector('.read-btn');
-  console.log("Read button is :", readButton);
+  var readButton;
+
   // remove button on card/bookmark
-  var deleteButton = document.querySelector('.delete-btn');
-  console.log("Delete button is :", deleteButton);
+  var deleteButton;
   // array to store cards
   var cards = [];
 
-// objects
-  // bookmark/card
-    // properties
-      // title (string)
-      // url (url/string)
-      // read or unread (boolean)
-
-    // methods
-
-// other data structures
-  // list/array of bookmarks/cards
 
 // event listeners
 
@@ -39,12 +27,12 @@ submitButton.addEventListener('click', createCard);
 
   // remove button
     // on click, remove bookmark/card from list
-deleteButton.addEventListener('click', findCardInArray);
+
 
   // read/unread button
     // on click, toggle bookmark/card object read property true/false
     // on click, toggle .read class on or off
-readButton.addEventListener('click', changeCardReadUnread);
+
 
 // functions (some may be object methods)
 
@@ -70,7 +58,8 @@ function addCardToList(newArrayItem){
 
 
   // find bookmark/card in list/array
-function findCardInArray(){
+function findCardInArray(event){
+    console.log("findCardInArray");
     // if object title = title of object in list/array
       // found correct object
     // else
@@ -115,4 +104,12 @@ function addCardToPage(cardToAddToPage){
                             "</article>";
     var section = document.querySelector('.section-right');
     section.appendChild(newArticle);
+
+    readButton = document.querySelector('.read-btn');
+    console.log("Read button is :", readButton);
+    readButton.addEventListener('click', changeCardReadUnread);
+    
+    deleteButton = document.querySelector('.delete-btn');
+    console.log("Delete button is :", deleteButton);
+    deleteButton.addEventListener('click', findCardInArray);
 }
