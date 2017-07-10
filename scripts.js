@@ -11,11 +11,14 @@
   var submitButton = document.querySelector('.enter-btn');
   console.log("Submit button is :", submitButton);
 
+  var sectionRight = document.querySelector('.section-right');
+  console.log("sectionRight is: ", sectionRight);
+
   // toggle buttons on card/bookmark (read/unread)
   var readButtons = [];
 
-  // remove button on card/bookmark
-  var deleteButton;
+  // remove buttons on cards/bookmarks
+  var deleteButtons = [];
   // array to store cards
   var cards = [];
   // array to store delete buttons on cards
@@ -69,11 +72,21 @@ function findCardInArray(event){
 }
 
   // remove bookmark/card from list/array
-function removeCardFromArray(){
+function removeCardFromArray(event){
     // delete from list/array
     // clean up array? (remove empty array index)
+    console.log("this is : ", this);
+    console.log("this.parentNode is : ", this.parentNode);
+    removeCardFromPage(this.parentNode);
 }
 
+function removeCardFromPage(cardToBeRemoved){
+  console.log("cardToBeRemoved is :", cardToBeRemoved);
+  console.log("cardToBeRemoved parent is :", cardToBeRemoved.parentNode);
+  console.log("sectionRight is: ", sectionRight);
+  console.log("sectionRight children are : ", sectionRight.childNode);
+  sectionRight.removeChild(cardToBeRemoved);
+}
 
   // toggle read object property
 function toggleReadProperty() {
@@ -85,12 +98,12 @@ function toggleReadProperty() {
 
 function toggleReadClass(buttonToToggleClass){
     // toggle read/unread button on cards/bookmarks (remove/add .read class)
-    console.log("this is: ",this);
+  //  console.log("this is: ",this);
   buttonToToggleClass.classList.toggle('read');
   }
 
 function changeCardReadUnread(event){
-  console.log("this is: ", this);
+//  console.log("this is: ", this);
   toggleReadClass(this);
     //  toggleReadProperty();
 }
@@ -98,16 +111,16 @@ function changeCardReadUnread(event){
 // add child
 function addCardToPage(cardToAddToPage){
     var newArticle = document.createElement("ARTICLE");
-    newArticle.innerHTML = "<article class=\"container\">" +
-                              "<p class=\"card-title\">" + cardToAddToPage.title + "</p>" +
+    newArticle.className = "container"
+    newArticle.innerHTML =    "<p class=\"card-title\">" + cardToAddToPage.title + "</p>" +
                               "<br><hr class=\"line\"/>" +
                               "<p class=\"website-link\">" + cardToAddToPage.url + "</p>" +
                               "<hr class=\"line\"/>" +
                               "<button class=\"read-btn\">Read</button>" +
-                              "<button class=\"delete-btn\">Delete</button>" +
-                            "</article>";
-    var section = document.querySelector('.section-right');
-    section.appendChild(newArticle);
+                              "<button class=\"delete-btn\">Delete</button>";
+    sectionRight.appendChild(newArticle);
+    console.log("sectionRight new child is: ", sectionRight.childNode);
+    console.log("newArticle parent is: ", newArticle.parentNode);
 
 
     readButtons = document.querySelectorAll('.read-btn');
@@ -116,7 +129,9 @@ function addCardToPage(cardToAddToPage){
     readButtons[readButtons.length-1].addEventListener('click', changeCardReadUnread);
     console.log("readButtons[readButtons.length-1]: ", readButtons[readButtons.length-1]);
 
-    deleteButtons = document.querySelector('.delete-btn');
-    console.log("Delete button is :", deleteButtons);
-    deleteButton.addEventListener('click', findCardInArray);
+    deleteButtons = document.querySelectorAll('.delete-btn');
+    console.log("deleteButtons is: ", deleteButtons);
+    deleteButtons[deleteButtons.length-1].addEventListener('click', removeCardFromArray);
+    console.log("deleteButtons[deleteButtons.length-1]: ", deleteButtons[deleteButtons.length-1]);
+
 }
