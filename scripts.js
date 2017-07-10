@@ -65,6 +65,7 @@ function createCard(event){
 function addCardToList(newArrayItem){
       // add to end of list/array
   cards.push(newArrayItem);
+  addCardToPage(newArrayItem);
 }
 
 
@@ -93,12 +94,25 @@ function toggleReadProperty() {
 
 function toggleReadClass(){
     // toggle read/unread button on cards/bookmarks (remove/add .read class)
-    readButton.classList.toggle('read');
+  readButton.classList.toggle('read');
   }
 
 function changeCardReadUnread(event){
-      toggleReadClass();
+  toggleReadClass();
     //  toggleReadProperty();
-    // change bookmark/card read/unread
-    // toggle read object property
+}
+
+// add child
+function addCardToPage(cardToAddToPage){
+    var newArticle = document.createElement("ARTICLE");
+    newArticle.innerHTML = "<article class=\"container\">" +
+                              "<p class=\"card-title\">" + cardToAddToPage.title + "</p>" +
+                              "<br><hr class=\"line\"/>" +
+                              "<p class=\"website-link\">" + cardToAddToPage.url + "</p>" +
+                              "<hr class=\"line\"/>" +
+                              "<button class=\"read-btn\">Read</button>" +
+                              "<button class=\"delete-btn\">Delete</button>" +
+                            "</article>";
+    var section = document.querySelector('.section-right');
+    section.appendChild(newArticle);
 }
