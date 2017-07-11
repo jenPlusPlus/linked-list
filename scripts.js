@@ -4,44 +4,36 @@
   // input field for title (text)
   var titleInput = document.querySelector('.website-title');
   console.log("Title input is :", titleInput);
+
   // input field for url (url)
   var urlInput = document.querySelector('.website-url');
   console.log("URL input is :", urlInput);
+
   // submit button
   var submitButton = document.querySelector('.enter-btn');
   console.log("Submit button is :", submitButton);
 
+  // section on right for holding cards
   var sectionRight = document.querySelector('.section-right');
   console.log("sectionRight is: ", sectionRight);
 
-  // toggle buttons on card/bookmark (read/unread)
+  // array of read toggle buttons on card/bookmark
   var readButtons = [];
 
-  // remove buttons on cards/bookmarks
+  // array of delete buttons on cards/bookmarks
   var deleteButtons = [];
+
   // array to store cards
   var cards = [];
-  // array to store delete buttons on cards
-  var deleteButtons = [];
 
-// event listeners
 
-  // submit button
-    // on click, add bookmark/card to list
+    // event listener: on click, create a card
 submitButton.addEventListener('click', createCard);
 
-  // remove button
-    // on click, remove bookmark/card from list
 
+// functions (some may be object methods later)
 
-  // read/unread button
-    // on click, toggle bookmark/card object read property true/false
-    // on click, toggle .read class on or off
-
-
-// functions (some may be object methods)
-
-  // Card constructor/prototype
+  // Card prototype
 function Card(title, url) {
   this.title = title;
   this.url = url;
@@ -56,11 +48,9 @@ function createCard(event){
 }
   // add bookmark/card to list/array
 function addCardToList(newArrayItem){
-      // add to end of list/array
   cards.push(newArrayItem);
   addCardToPage(newArrayItem);
 }
-
 
   // find bookmark/card in list/array
 function findCardInArray(event){
@@ -108,7 +98,7 @@ function changeCardReadUnread(event){
     //  toggleReadProperty();
 }
 
-// add child
+// add child article element to section-right element
 function addCardToPage(cardToAddToPage){
     var newArticle = document.createElement("ARTICLE");
     newArticle.className = "container"
@@ -122,16 +112,22 @@ function addCardToPage(cardToAddToPage){
     console.log("sectionRight new child is: ", sectionRight.childNode);
     console.log("newArticle parent is: ", newArticle.parentNode);
 
+    addEventListenerToReadButton();
+    addEventListenerToDeleteButton();
 
-    readButtons = document.querySelectorAll('.read-btn');
-    console.log("readButtons.length is: ", readButtons.length);
-    console.log("readButtons is: ", readButtons);
-    readButtons[readButtons.length-1].addEventListener('click', changeCardReadUnread);
-    console.log("readButtons[readButtons.length-1]: ", readButtons[readButtons.length-1]);
+}
 
-    deleteButtons = document.querySelectorAll('.delete-btn');
-    console.log("deleteButtons is: ", deleteButtons);
-    deleteButtons[deleteButtons.length-1].addEventListener('click', removeCardFromArray);
-    console.log("deleteButtons[deleteButtons.length-1]: ", deleteButtons[deleteButtons.length-1]);
+function addEventListenerToDeleteButton() {
+  deleteButtons = document.querySelectorAll('.delete-btn');
+  console.log("deleteButtons is: ", deleteButtons);
+  deleteButtons[deleteButtons.length-1].addEventListener('click', removeCardFromArray);
+  console.log("deleteButtons[deleteButtons.length-1]: ", deleteButtons[deleteButtons.length-1]);
+}
 
+function addEventListenerToReadButton() {
+  readButtons = document.querySelectorAll('.read-btn');
+  console.log("readButtons.length is: ", readButtons.length);
+  console.log("readButtons is: ", readButtons);
+  readButtons[readButtons.length-1].addEventListener('click', changeCardReadUnread);
+  console.log("readButtons[readButtons.length-1]: ", readButtons[readButtons.length-1]);
 }
