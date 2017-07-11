@@ -54,27 +54,28 @@ function addCardToList(newArrayItem){
 
   // find bookmark/card in list/array
 function findCardInArray(event){
-    console.log("findCardInArray");
-    // if object title = title of object in list/array
+  console.log("this parent is : ", this.parentNode);
+  var text = this.parentNode.querySelector('.website-link').innerText;
+  console.log("text is: ", text);
+  for(var i = 0; i < cards.length;i++){
+    if(cards[i].url === text){
+        removeCardFromArray(i);
+    }
+  }
+
       // found correct object
     // else
       // get next object from array
 }
 
   // remove bookmark/card from list/array
-function removeCardFromArray(event){
-    // delete from list/array
-    // clean up array? (remove empty array index)
-    console.log("this is : ", this);
-    console.log("this.parentNode is : ", this.parentNode);
-    removeCardFromPage(this.parentNode);
+function removeCardFromArray(index){
+    // delete from array
+    cards.splice(index, 1);
 }
 
-function removeCardFromPage(cardToBeRemoved){
-  console.log("cardToBeRemoved is :", cardToBeRemoved);
-  console.log("cardToBeRemoved parent is :", cardToBeRemoved.parentNode);
-  console.log("sectionRight is: ", sectionRight);
-  console.log("sectionRight children are : ", sectionRight.childNode);
+function removeCardFromPage(){
+  cardToBeRemoved = this.parentNode;
   sectionRight.removeChild(cardToBeRemoved);
 }
 
@@ -120,7 +121,8 @@ function addCardToPage(cardToAddToPage){
 function addEventListenerToDeleteButton() {
   deleteButtons = document.querySelectorAll('.delete-btn');
   console.log("deleteButtons is: ", deleteButtons);
-  deleteButtons[deleteButtons.length-1].addEventListener('click', removeCardFromArray);
+  deleteButtons[deleteButtons.length-1].addEventListener('click', findCardInArray);
+  deleteButtons[deleteButtons.length-1].addEventListener('click', removeCardFromPage);
   console.log("deleteButtons[deleteButtons.length-1]: ", deleteButtons[deleteButtons.length-1]);
 }
 
