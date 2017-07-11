@@ -52,20 +52,16 @@ function addCardToList(newArrayItem){
   addCardToPage(newArrayItem);
 }
 
-  // find bookmark/card in list/array
+  // find bookmark/card in array
 function findCardInArray(event){
   console.log("this parent is : ", this.parentNode);
   var text = this.parentNode.querySelector('.website-link').innerText;
   console.log("text is: ", text);
   for(var i = 0; i < cards.length;i++){
     if(cards[i].url === text){
-        removeCardFromArray(i);
+        return i;
     }
   }
-
-      // found correct object
-    // else
-      // get next object from array
 }
 
   // remove bookmark/card from list/array
@@ -74,6 +70,7 @@ function removeCardFromArray(index){
     cards.splice(index, 1);
 }
 
+// remove card from page (remove child node)
 function removeCardFromPage(){
   cardToBeRemoved = this.parentNode;
   sectionRight.removeChild(cardToBeRemoved);
@@ -87,14 +84,12 @@ function toggleReadProperty() {
       // else, set to true
 }
 
+// toggle read/unread button on cards/bookmarks (remove/add .read class)
 function toggleReadClass(buttonToToggleClass){
-    // toggle read/unread button on cards/bookmarks (remove/add .read class)
-  //  console.log("this is: ",this);
   buttonToToggleClass.classList.toggle('read');
   }
 
 function changeCardReadUnread(event){
-//  console.log("this is: ", this);
   toggleReadClass(this);
     //  toggleReadProperty();
 }
@@ -121,7 +116,7 @@ function addCardToPage(cardToAddToPage){
 function addEventListenerToDeleteButton() {
   deleteButtons = document.querySelectorAll('.delete-btn');
   console.log("deleteButtons is: ", deleteButtons);
-  deleteButtons[deleteButtons.length-1].addEventListener('click', findCardInArray);
+  deleteButtons[deleteButtons.length-1].addEventListener('click', removeCardFromArray(findCardInArray));
   deleteButtons[deleteButtons.length-1].addEventListener('click', removeCardFromPage);
   console.log("deleteButtons[deleteButtons.length-1]: ", deleteButtons[deleteButtons.length-1]);
 }
