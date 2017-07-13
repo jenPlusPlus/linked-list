@@ -1,61 +1,48 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
-    <title>Linked List</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
-  </head>
+<head>
+  <title>Linked List</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="path/to/your/jquery.min.js"><\/script>')</script>
+</head>
 
 <body>
 
  <section class="section-left">
-  <!-- <article class="left-container"> -->
-  <header>
-   <h1>Linked<span><img class= "logo" src="linked-list-logo.svg" alt=""></span>List</h1>
-  </header>
-  <form class="input-fields">
-    <input type="" class="website-title" placeholder="Website Title"><br>
-    <input type="" class="website-url" placeholder="Website URL"><br>
-    <button class="enter-btn">Enter</button>
-  </form>
-  <!-- </article> -->
+  <article class="left-container">
+    <header>
+     <h1><img class="logo" src="logo.svg" alt="logo"></h1>
+    </header>
+    <form class="input-fields">
+     <input class="website-name-field" placeholder="Website Title"><br>
+     <input  class="website-url-field" placeholder="Website URL"><br>
+     <button class="enter-btn">Enter</button>
+    </form>
+     <button class="total-bkms">All Bookmarks: <span class= "total-counter" disabled>0</span></button>
+     <button class="read-bkms">Read Bookmarks: <span class= "read-counter" disabled>0</span></button>
+     <button class="clear-all">Clear Read Bookmarks</button>
+  </article>
  </section>
 
  <section class="section-right">
-   <!-- <article class="container">
-     <p class="card-title">The Website Title</p><br>
-     <hr class="line"/>
-     <p class="website-link"><a href="https://stackoverflow.com">www.thewebsiteurl.com</a></p>
-     <hr class="line"/>
-     <button class="read-btn">Read</button>
-     <button class="delete-btn">Delete</button>
-   </article> -->
-
-
-   <!-- <article class="container">
-     <p class="card-title">The Website Title</p><br>
-     <hr class="line"/>
-     <p class="website-link"><a href="https://stackoverflow.com">www.thewebsiteurl.com</a></p>
-     <hr class="line"/>
-     <button class="read-btn">Read</button>
-     <button class="delete-btn">Delete</button>
-   </article>
-   <article class="container">
-     <p class="card-title">The Website Title</p><br>
-     <hr class="line"/>
-     <p class="website-link">www.thewebsiteurl.com</p>
-     <hr class="line"/>
-     <button class="read-btn">Read</button>
-     <button class="delete-btn">Delete</button>
-   </article> -->
+  <ul>
+    <!-- <li>
+     <article class="container">
+      <p class="card-title">The Website Title</p><br>
+      <hr class="line"/>
+      <p class="website-link"><a href="https://stackoverflow.com">www.thewebsiteurl.com</a></p>
+      <hr class="line"/>
+      <button class="read-btn">Read</button>
+      <button class="delete-btn">Delete</button>
+     </article>
+    </li> -->
+  </ul>
  </section>
 
-
-<script type="text/javascript" src="scripts.js">
-
-</script>
+ <script type="text/javascript" src="scripts.js"></script>
 
 </body>
 
